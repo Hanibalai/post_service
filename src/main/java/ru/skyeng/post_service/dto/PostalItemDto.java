@@ -22,7 +22,6 @@ public class PostalItemDto {
     private String recipientCountry;
     @NotBlank(message = "Recipient city is required")
     private String recipientCity;
-    @NotBlank(message = "Recipient state is required")
     private String recipientState;
     @NotBlank(message = "Recipient street is required")
     private String recipientStreet;

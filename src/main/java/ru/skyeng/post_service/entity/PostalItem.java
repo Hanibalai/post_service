@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "mail_item")
+@Table(name = "postal_item")
 public class PostalItem {
 
     @Id

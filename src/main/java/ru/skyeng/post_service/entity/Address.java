@@ -1,5 +1,6 @@
 package ru.skyeng.post_service.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,9 +35,6 @@ public class Address {
 
     @Column(name = "city", nullable = false, length = 20)
     private String city;
-
-    @Column(name = "state", length = 20)
-    private String state;
 
     @Column(name = "country", nullable = false, length = 20)
     private String country;
