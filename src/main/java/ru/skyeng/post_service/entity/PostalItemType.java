@@ -1,7 +1,6 @@
 package ru.skyeng.post_service.entity;
 
-
-public enum ParcelType {
+public enum PostalItemType {
     LETTER,
     PARCEL,
     PARCEL_POST,

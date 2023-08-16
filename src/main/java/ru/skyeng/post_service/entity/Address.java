@@ -26,6 +26,9 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "house", nullable = false, length = 20)
+    private String house;
+
     @Column(name = "street", nullable = false, length = 30)
     private String street;
 
@@ -42,5 +45,5 @@ public class Address {
     private List<PostOffice> postOffices;
 
     @OneToMany(mappedBy = "recipientAddress")
-    private List<Parcel> parcels;
+    private List<PostalItem> postalItems;
 }

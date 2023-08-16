@@ -20,18 +20,18 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "parcel")
-public class Parcel {
+@Table(name = "mail_item")
+public class PostalItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "type", nullable = false)
+    @Column(name = "type")
     @Enumerated(EnumType.STRING)
-    private ParcelType type;
+    private PostalItemType type;
 
-    @Column(name = "index", nullable = false, length = 20)
+    @Column(name = "post_code", nullable = false, length = 20)
     private String recipientIndex;
 
     @ManyToOne
