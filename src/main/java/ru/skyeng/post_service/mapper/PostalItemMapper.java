@@ -11,10 +11,12 @@ import ru.skyeng.post_service.entity.PostalItem;
         unmappedSourcePolicy = ReportingPolicy.IGNORE,
         unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface PostalItemMapper {
-    @Mapping(target = "recipientCountry", source = "recipientAddress.country")
-    @Mapping(target = "recipientCity", source = "recipientAddress.city")
-    @Mapping(target = "recipientStreet", source = "recipientAddress.street")
+
+    @Mapping(target = "recipientPostCode", source = "recipientAddress.postCode")
     @Mapping(target = "recipientHouse", source = "recipientAddress.house")
+    @Mapping(target = "recipientStreet", source = "recipientAddress.street")
+    @Mapping(target = "recipientCity", source = "recipientAddress.city")
+    @Mapping(target = "recipientCountry", source = "recipientAddress.country")
     PostalItemDto toDto(PostalItem postalItem);
 
     @Mapping(target = "recipientAddress", expression = "java(mapAddress(postalItemDto))")
@@ -22,6 +24,7 @@ public interface PostalItemMapper {
 
     default Address mapAddress(PostalItemDto postalItemDto) {
         return Address.builder()
+                .postCode(postalItemDto.getRecipientPostCode())
                 .house(postalItemDto.getRecipientHouse())
                 .street(postalItemDto.getRecipientStreet())
                 .city(postalItemDto.getRecipientCity())

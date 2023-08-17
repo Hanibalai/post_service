@@ -27,6 +27,9 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "index", nullable = false, length = 20)
+    private String postCode;
+
     @Column(name = "house", nullable = false, length = 20)
     private String house;
 

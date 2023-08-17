@@ -9,11 +9,19 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -31,13 +39,23 @@ public class PostalItem {
     @Enumerated(EnumType.STRING)
     private PostalItemType type;
 
-    @Column(name = "post_code", nullable = false, length = 20)
-    private String recipientIndex;
+    @Column(name = "name", nullable = false, length = 30)
+    private String recipientName;
 
     @ManyToOne
     @JoinColumn(name = "address_id", nullable = false)
     private Address recipientAddress;
 
-    @Column(name = "name", nullable = false, length = 30)
-    private String recipientName;
+    @OneToMany(mappedBy = "postalItem")
+    List<TrackPoint> trackHistory;
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 }
