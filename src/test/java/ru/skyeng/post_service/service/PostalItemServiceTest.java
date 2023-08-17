@@ -9,7 +9,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
-import ru.skyeng.post_service.dto.ItemTrackHistoryDto;
+import ru.skyeng.post_service.dto.TrackHistoryDto;
 import ru.skyeng.post_service.dto.PostalItemDto;
 import ru.skyeng.post_service.dto.TrackPointDto;
 import ru.skyeng.post_service.entity.PostalItem;
@@ -128,7 +128,7 @@ class PostalItemServiceTest {
 
     @Test
     void getTrackHistory_shouldReturnTrackHistoryObject() {
-        ItemTrackHistoryDto actual = ItemTrackHistoryDto.builder()
+        TrackHistoryDto actual = TrackHistoryDto.builder()
                 .status(TrackStatus.REGISTERED)
                 .history(new ArrayList<>())
                 .build();

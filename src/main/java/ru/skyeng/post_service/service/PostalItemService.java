@@ -4,11 +4,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.skyeng.post_service.dto.ItemTrackHistoryDto;
+import ru.skyeng.post_service.dto.TrackHistoryDto;
 import ru.skyeng.post_service.dto.PostalItemDto;
 import ru.skyeng.post_service.dto.TrackPointDto;
 import ru.skyeng.post_service.entity.TrackStatus;
-import ru.skyeng.post_service.entity.PostOffice;
 import ru.skyeng.post_service.entity.PostalItem;
 import ru.skyeng.post_service.entity.TrackPoint;
 import ru.skyeng.post_service.exception.EntityNotFoundException;
@@ -46,7 +45,7 @@ public class PostalItemService {
                 .build();
 
         trackPointRepository.save(trackPoint);
-        log.info("Created postal item: {}", postalItem);
+        log.info("Created postal item with id: {}", postalItem.getId());
 
         return postalItemMapper.toDto(postalItem);
     }
@@ -69,13 +68,13 @@ public class PostalItemService {
         trackPointRepository.save(trackPoint);
 
         postalItem.getTrackHistory().add(trackPoint);
-        log.info("Updated postal item: {}", postalItem);
+        log.info("Updated postal item with id: {}", postalItem.getId());
 
         return postalItemMapper.toDto(postalItem);
     }
 
     @Transactional(readOnly = true)
-    public ItemTrackHistoryDto getTrackHistory(Long id) {
+    public TrackHistoryDto getTrackHistory(Long id) {
         PostalItem postalItem = getItem(id);
 
         TrackStatus actualStatus = postalItem.getTrackHistory().stream()
@@ -88,7 +87,7 @@ public class PostalItemService {
                 .map(TrackPoint::toHistoryValue)
                 .toList();
 
-        return ItemTrackHistoryDto.builder()
+        return TrackHistoryDto.builder()
                 .status(actualStatus)
                 .history(history)
                 .build();

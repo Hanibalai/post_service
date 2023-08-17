@@ -26,7 +26,7 @@ public class PostOfficeService {
     public PostOfficeDto create(PostOfficeDto postOfficeDto) {
         PostOffice postOffice = postOfficeMapper.toEntity(postOfficeDto);
         addressRepository.save(postOffice.getOfficeAddress());
-        log.info("Created post office: {}", postOffice);
+        log.info("Created post office with id: {}", postOffice.getId());
 
         return postOfficeMapper.toDto(postOfficeRepository.save(postOffice));
     }
