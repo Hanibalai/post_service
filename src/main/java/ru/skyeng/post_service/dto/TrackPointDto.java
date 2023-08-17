@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.skyeng.post_service.entity.ItemTrackStatus;
+import ru.skyeng.post_service.entity.TrackStatus;
 
 @Data
 @Builder
@@ -14,7 +14,6 @@ import ru.skyeng.post_service.entity.ItemTrackStatus;
 public class TrackPointDto {
 
     @NotNull(message = "Status is required")
-    private ItemTrackStatus status;
-    @NotNull(message = "Post office id is required")
+    private TrackStatus status;
     private Long postOfficeId;
 }

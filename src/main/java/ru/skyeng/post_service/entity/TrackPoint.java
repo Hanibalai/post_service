@@ -40,7 +40,7 @@ public class TrackPoint {
 
     @Column(name = "status")
     @Enumerated(EnumType.ORDINAL)
-    private ItemTrackStatus status;
+    private TrackStatus status;
 
     @ManyToOne
     @JoinColumn(name = "post_office_id")

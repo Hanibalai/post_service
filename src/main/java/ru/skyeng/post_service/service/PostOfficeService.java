@@ -1,6 +1,7 @@
 package ru.skyeng.post_service.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.skyeng.post_service.dto.PostOfficeDto;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class PostOfficeService {
 
     private final PostOfficeRepository postOfficeRepository;
@@ -23,8 +25,9 @@ public class PostOfficeService {
     @Transactional
     public PostOfficeDto create(PostOfficeDto postOfficeDto) {
         PostOffice postOffice = postOfficeMapper.toEntity(postOfficeDto);
-        System.out.println(postOffice.getOfficeAddress());
         addressRepository.save(postOffice.getOfficeAddress());
+        log.info("Created post office: {}", postOffice);
+
         return postOfficeMapper.toDto(postOfficeRepository.save(postOffice));
     }
 

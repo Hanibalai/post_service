@@ -28,26 +28,31 @@ public class PostalItemController {
 
     @PostMapping
     public PostalItemDto create(@Valid @RequestBody PostalItemDto postalItemDto) {
+        log.debug("Received request to create postal item: {}", postalItemDto);
         return postItemService.create(postalItemDto);
     }
 
     @PutMapping("/{id}")
     public PostalItemDto update(@PathVariable Long id, @Valid @RequestBody TrackPointDto trackPointDto) {
+        log.debug("Received request to update postal item with id: {}", id);
         return postItemService.update(id, trackPointDto);
     }
 
     @GetMapping("/{id}/History")
     public ItemTrackHistoryDto getTrackHistory(@PathVariable Long id) {
+        log.debug("Received request to get track history for postal item with id: {}", id);
         return postItemService.getTrackHistory(id);
     }
 
     @GetMapping("/{id}")
     public PostalItemDto getById(@PathVariable Long id) {
+        log.debug("Received request to get postal item with id: {}", id);
         return postItemService.getById(id);
     }
 
     @GetMapping
     public List<PostalItemDto> getAll() {
+        log.debug("Received request to get all postal items");
         return postItemService.getAll();
     }
 }
