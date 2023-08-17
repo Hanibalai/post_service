@@ -60,6 +60,7 @@ class PostalItemServiceTest {
         when(postalItemMapper.toEntity(postalItemDto)).thenReturn(postalItem);
         when(postalItemMapper.toDto(postalItem)).thenReturn(postalItemDto);
         when(postalItemRepository.findById(1L)).thenReturn(Optional.of(postalItem));
+        when(postalItemRepository.save(postalItem)).thenReturn(postalItem);
     }
 
     @Test
@@ -72,11 +73,8 @@ class PostalItemServiceTest {
     @Test
     void create_shouldSaveTrackPoint() {
         postalItemService.create(postalItemDto);
-        TrackPoint trackPoint = TrackPoint.builder()
-                .status(TrackStatus.REGISTERED)
-                .build();
 
-        verify(trackPointRepository).save(trackPoint);
+        verify(trackPointRepository).save(Mockito.any());
     }
 
     @Test

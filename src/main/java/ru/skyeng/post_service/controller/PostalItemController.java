@@ -38,7 +38,7 @@ public class PostalItemController {
     }
 
     @Operation(summary = "Обновление отправления: " +
-            "в тело запроса передаются объект TrackPointDto для обновления статуса или промежуточного пункта")
+            "в тело запроса передается объект TrackPointDto для обновления статуса или промежуточного пункта")
     @PutMapping("/{id}")
     public PostalItemDto update(
             @Parameter(description = "Идентификатор отправления", example = "1") @PathVariable Long id,
@@ -47,7 +47,7 @@ public class PostalItemController {
         return postItemService.update(id, trackPointDto);
     }
 
-    @Operation(summary = "Получение истории отправления " +
+    @Operation(summary = "Получение истории отправления: " +
             "получаем объект ItemTrackHistoryDto, содержащий актуальный статус и историю отправления")
     @GetMapping("/{id}/history")
     public TrackHistoryDto getTrackHistory(
