@@ -18,6 +18,8 @@
 		<java.version>17</java.version>
 	</properties>
 
+	<packaging>war</packaging>
+
 	<dependencies>
 
 		<!-- Spring boot starters -->
@@ -47,6 +49,19 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- Container -->
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-core</artifactId>
+			<version>10.1.12</version>
 		</dependency>
 
 		<!-- Database -->
