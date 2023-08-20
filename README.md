@@ -1,6 +1,6 @@
 UPD: 
 To quickly start the database and application, Docker-compose.yaml file was created.
-To run the container, you need to have docker running, clone the repository, go to the root folder in the console and run command: docker-compose up -d --build 
+To run the container, you need to have docker running, clone the repository, go to the project root directory and run console command: docker-compose up -d --build 
 
 A project-tracker of postal items project has been implemented.
 Two controllers have been implemented: a postal item controller and a post office controller.
